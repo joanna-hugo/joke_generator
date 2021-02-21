@@ -66,7 +66,7 @@
     //update temp data button
     document.addEventListener("DOMContentLoaded", function (event) {
         event.preventDefault();
-        const url = "http://192.168.1.101:3000/sky/cloud/ckkj2ivmi000lxcslbjfr8dtk/temperature_store/temperatures";
+        const url = "http://localhost:3000/sky/cloud/ckkj2ivmi000lxcslbjfr8dtk/temperature_store/temperatures";
         fetch(url)
             .then(function (response) {
                 return response.json();
@@ -84,7 +84,7 @@
 
     document.getElementById("button").addEventListener("click", function (event) {
         event.preventDefault();
-        const url = "http://192.168.1.101:3000/sky/cloud/ckkj2ivmi000lxcslbjfr8dtk/temperature_store/threshold_violations";
+        const url = "http://localhost:3000/sky/cloud/ckkj2ivmi000lxcslbjfr8dtk/temperature_store/threshold_violations";
         fetch(url)
             .then(function (response) {
                 return response.json();
@@ -102,7 +102,7 @@
     //setup Profile
     document.addEventListener("DOMContentLoaded", function(){
         console.log("setting location...")
-        let url = "http://192.168.1.101:3000/sky/cloud/ckkj2ivmi000lxcslbjfr8dtk/sensor_profile/location";
+        let url = "http://localhost:3000/sky/cloud/ckkj2ivmi000lxcslbjfr8dtk/sensor_profile/location";
         fetch(url)
             .then(function (response) {
                 return response.json();
@@ -112,7 +112,7 @@
         });
 
         console.log("setting name...")
-        url = "http://192.168.1.101:3000/sky/cloud/ckkj2ivmi000lxcslbjfr8dtk/sensor_profile/name";
+        url = "http://localhost:3000/sky/cloud/ckkj2ivmi000lxcslbjfr8dtk/sensor_profile/name";
         fetch(url)
             .then(function (response) {
                 return response.json();
@@ -122,7 +122,7 @@
         });
 
         console.log("setting threshold...")
-        url = "http://192.168.1.101:3000/sky/cloud/ckkj2ivmi000lxcslbjfr8dtk/sensor_profile/threshold";
+        url = "http://localhost:3000/sky/cloud/ckkj2ivmi000lxcslbjfr8dtk/sensor_profile/threshold";
         fetch(url)
             .then(function (response) {
                 return response.json();
@@ -132,7 +132,7 @@
         });
 
         console.log("setting name...")
-        url = "http://192.168.1.101:3000/sky/cloud/ckkj2ivmi000lxcslbjfr8dtk/sensor_profile/phone_number";
+        url = "http://localhost:3000/sky/cloud/ckkj2ivmi000lxcslbjfr8dtk/sensor_profile/phone_number";
         fetch(url)
             .then(function (response) {
                 return response.json();
