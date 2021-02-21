@@ -1,101 +1,173 @@
-<!--https://byu.instructure.com/courses/3685/assignments/154095?return_to=https%3A%2F%2Fbyu.instructure.com%2Fcalendar%23view_name%3Dmonth%26view_start%3D2019-10-11-->
-
-<!------->
-<!--layout: examples-->
-<!--title: Cover Template-->
-<!--extra_css:-->
-<!--  - "cover.css"-->
-<!--html_class: "h-100"-->
-<!--body_class: "d-flex h-100 text-center text-white bg-dark"-->
-<!--include_js: false-->
-<!------->
-<html class = "h-100">
+<html class="h-100">
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./cover.css">
 </head>
 
-<body class = "d-flex h-100 text-center text-white bg-dark" id="app">
-    
-  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-  
-    <main role="main" class="px-3" background-image: url("/assets/yoda.jpg")>
-      <h1>I Think I'm Funny</h1>
-      
-      <!--<p class="lead" id="message">Put your own sentence to change here</p>-->
-      <!--<p class="lead">-->
-      <!--  <a href="#" class="btn btn-lg btn-secondary font-weight-bold border-white bg-white"-->
-      <!--      id="button">-->
-      <!--      Yoda-ize!!</a>-->
-      <!--</p>-->
-      
-      
-      
-      <p id = joke_setup> </p>
-      <p id = joke_punchline> </p>
-      <button id = button bottom = "0"> Random Joke</button>
+<body class="d-flex h-100 text-center text-white bg-dark" id="app">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <!--    The current temperature.-->
+    <!--    Listing of recent temperature results-->
+    <!--    Log of threshold violations. You could do this in the temperature listing with a highlight or as a separate listing.-->
+    <main role="main" class="px-3">
+        <h1>Temperature in My Office</h1>
+        <h2 id=current_temp></h2>
+        <br>
+
+        <h2>Temperature History</h2>
+        <ul id=temp_history></ul>
+        <br>
+
+        <h2>Temperature Violations </h2>
+        <p>Either the sensor is broken, or I need to get out of dodge</p>
+        <ul id=temp_violations></ul>
+
+
+        <p id=joke_setup></p>
+        <p id=joke_punchline></p>
+        <button id=button bottom="0"> Update Temperature Data</button>
+
+        <h2>Profile</h2>
+
+        <form id = "form">
+            <label for="location">Location:</label><br>
+            <input type="text" id="location" name="location"><br>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name"><br>
+            <label for="threshold">Threshold:</label><br>
+            <input type="text" id="threshold" name="threshold"><br>
+            <label for="phone_number">Phone Number:</label><br>
+            <input type="text" id="phone_number" name="phone_number"><br>
+        </form>
+        <button id="submit">Update Profile</button>
+
     </main>
-  
+
     <footer class="mt-auto text-white-50">
-      <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+        <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a
+                href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
     </footer>
-  </div>
-  
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 
 <script>
-
-  document.getElementById("button").addEventListener("click", function(event) {
-    event.preventDefault();
-    const url = "https://official-joke-api.appspot.com/random_joke";
-    fetch(url)
-        .then(function(response) {
-            return response.json();
-        }).then(function(json) {
+    //update temp data button
+    document.addEventListener("DOMContentLoaded", function (event) {
+        event.preventDefault();
+        const url = "http://192.168.1.101:3000/sky/cloud/ckkj2ivmi000lxcslbjfr8dtk/temperature_store/temperatures";
+        fetch(url)
+            .then(function (response) {
+                return response.json();
+            }).then(function (json) {
+            let ul = document.getElementById("temp_history")
+            ul.innerHTML = ""
+            for (let i = 0, len = Math.min(json.length, 25); i < len; i++) {
+                let temp = json[i]
+                ul.append(temp.temperature.toString() + "\t\t\t")
+            }
             console.log(json);
-            document.getElementById("joke_setup").innerHTML = json.setup;
-            document.getElementById("joke_punchline").innerHTML = json.punchline;
+            document.getElementById("current_temp").innerHTML = json[0].temperature;
         });
-});
-  // document.getElementById("button").addEventListener("click", function(event) {
-  //   var unirest = require("unirest");
-    
-  //   var req = unirest("POST", "https://yodish.p.rapidapi.com/yoda.json");
-    
-  //   req.query({
-  //   	"text": document.getElementById("message").innerHTML
-  //   });
-    
-  //   req.headers({
-  //   	"x-rapidapi-host": "yodish.p.rapidapi.com",
-  //   	"x-rapidapi-key": "b43ecad84bmsh60a54db03c9e063p104bf4jsn5d7a2a86e1ca",
-  //   	"content-type": "application/x-www-form-urlencoded"
-  //   });
-    
-  //   req.form({});
-    
-  //   req.end(function (res) {
-  //   	if (res.error) throw new Error(res.error);
-    
-  //   	console.log(res.body);
-  //   	document.getElementById("translated").innerHTML = res.toString();
-  //   });
+    });
 
-    
-  //   // event.preventDefault();
-  //   // const url = "https://official-joke-api.appspot.com/random_joke";
-  //   // fetch(url)
-  //   //     .then(function(response) {
-  //   //         return response.json();
-  //   //     }).then(function(json) {
-  //   //         console.log(json);
-  //   //         document.getElementById("joke_setup").innerHTML = json.setup;
-  //   //         document.getElementById("joke_punchline").innerHTML = json.punchline;
-  //   //     });
-  // });
+    document.getElementById("button").addEventListener("click", function (event) {
+        event.preventDefault();
+        const url = "http://192.168.1.101:3000/sky/cloud/ckkj2ivmi000lxcslbjfr8dtk/temperature_store/threshold_violations";
+        fetch(url)
+            .then(function (response) {
+                return response.json();
+            }).then(function (json) {
+            let ul = document.getElementById("temp_violations")
+            ul.innerHTML = ""
+            for (let i = 0, len = Math.min(json.length, 25); i < len; i++) {
+                let temp = json[i]
+                ul.append(temp.temperature.toString() + "\t\t\t")
+            }
+            console.log(json);
+        });
+    });
+
+    //setup Profile
+    document.addEventListener("DOMContentLoaded", function(){
+        console.log("setting location...")
+        let url = "http://192.168.1.101:3000/sky/cloud/ckkj2ivmi000lxcslbjfr8dtk/sensor_profile/location";
+        fetch(url)
+            .then(function (response) {
+                return response.json();
+            }).then(function (json) {
+            document.getElementById("location").value = json
+            console.log(json);
+        });
+
+        console.log("setting name...")
+        url = "http://192.168.1.101:3000/sky/cloud/ckkj2ivmi000lxcslbjfr8dtk/sensor_profile/name";
+        fetch(url)
+            .then(function (response) {
+                return response.json();
+            }).then(function (json) {
+            document.getElementById("name").value = json
+            console.log(json);
+        });
+
+        console.log("setting threshold...")
+        url = "http://192.168.1.101:3000/sky/cloud/ckkj2ivmi000lxcslbjfr8dtk/sensor_profile/threshold";
+        fetch(url)
+            .then(function (response) {
+                return response.json();
+            }).then(function (json) {
+            document.getElementById("threshold").value = json
+            console.log(json);
+        });
+
+        console.log("setting name...")
+        url = "http://192.168.1.101:3000/sky/cloud/ckkj2ivmi000lxcslbjfr8dtk/sensor_profile/phone_number";
+        fetch(url)
+            .then(function (response) {
+                return response.json();
+            }).then(function (json) {
+            document.getElementById("phone_number").value = json
+            console.log(json);
+        });
+    });
+
+    //update profile
+    document.getElementById("submit").addEventListener("click", function (event){
+        fetch("http://localhost:8010/proxy/sky/event/ckkj2ivmi000lxcslbjfr8dtk/none/sensor/profile_updated", {
+            method: 'POST',
+            body: JSON.stringify({
+                location : document.getElementById("location").value,
+                name : document.getElementById("name").value,
+                threshold : document.getElementById("threshold").value,
+                phone_number : document.getElementById("phone_number").value,
+            }),
+            mode: 'cors', // no-cors, *cors, same-origin
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            }
+        }).then(function (response) {
+            if (response.ok) {
+                console.log("SUCCESS")
+                return response.json();
+            }
+            return Promise.reject(response);
+        }).then(function (data) {
+            console.log(data);
+        }).catch(function (error) {
+            console.warn('Something went wrong.', error);
+        });
+    })
 
 </script>
 
