@@ -142,23 +142,41 @@
         });
     });
 
-    //update profile
+    /*
+    //update profile NOTE this code works, it is commented out to put focus on the error-causing code
     document.getElementById("submit").addEventListener("click", function (event){
-        fetch("http://localhost:8010/proxy/sky/event/ckkj2ivmi000lxcslbjfr8dtk/none/sensor/profile_updated", {
-            method: 'POST',
-            body: JSON.stringify({
-                location : document.getElementById("location").value,
-                name : document.getElementById("name").value,
-                threshold : document.getElementById("threshold").value,
-                phone_number : document.getElementById("phone_number").value,
-            }),
+        const url = "http://192.168.1.101:3000/sky/event/ckkj2ivmi000lxcslbjfr8dtk/sensor_profile/profile_updated";
+        let body = {
+            location : document.getElementById("location").value,
+            name : document.getElementById("name").value,
+            threshold : document.getElementById("threshold").value,
+            phone_number : document.getElementById("phone_number").value,
+        }
+        console.log(JSON.stringify(body))
+        postData(url, body)
+            .then(data => {
+                console.log(data); // JSON data parsed by `data.json()` call
+            });
+    })
+
+    function postData(url = '', data = {}) {
+        // Default options are marked with *
+        return fetch(url, {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            // credentials: 'same-origin', // include, *same-origin, omit
             headers: {
-                'Content-type': 'application/json; charset=UTF-8'
-            }
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin' : '*',
+                "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+            },
+            redirect: 'follow', // manual, *follow, error
+            referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+            body: JSON.stringify(data) // body data type must match "Content-Type" header
         }).then(function (response) {
             if (response.ok) {
-                console.log("SUCCESS")
                 return response.json();
             }
             return Promise.reject(response);
@@ -167,7 +185,32 @@
         }).catch(function (error) {
             console.warn('Something went wrong.', error);
         });
-    })
+    }
+    */
+
+    //NOTE: the following code seems to be causing the CORS error
+    fetch("http://192.168.1.101:3000/sky/event/ckkj2ivmi000lxcslbjfr8dtk/sensor_profile/profile_updated", {
+        method: 'POST',
+        body: JSON.stringify({
+            location : document.getElementById("location").value,
+            name : document.getElementById("name").value,
+            threshold : document.getElementById("threshold").value,
+            phone_number : document.getElementById("phone_number").value,
+        }),
+        mode: 'cors', // no-cors, *cors, same-origin
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    }).then(function (response) {
+        if (response.ok) {
+            return response.json();
+        }
+        return Promise.reject(response);
+    }).then(function (data) {
+        console.log(data);
+    }).catch(function (error) {
+        console.warn('Something went wrong.', error);
+    });
 
 </script>
 
